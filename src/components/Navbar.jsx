@@ -213,7 +213,7 @@ const Navbar = () => {
             }`}
             alt='logo'
             className='object-contain'
-            layout='fill'
+            fill
           />
         </a>
         <button
