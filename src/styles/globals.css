@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Darker+Grotesque:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fff;
+  --scrollbar-bg: #c9e1ff;
+  --scrollbar-thumb: #4e4eff;
+  --menu-bg: #4f4fff;
+  --menu-btn-bg: #282866;
+  --menu-btn-active-bg: #74fffe;
+  --menu-line-bg: #74fffe;
+  --menu-line-active-bg: #292967;
+  --menu-text: #fff;
+  --menu-text-hover: #edf82d;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: transparent;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+}
+
+.wrap_content {
+  display: flex;
+  justify-content: center;
+}
+
+.max_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* padding: 0 113.59px; */
+  padding: 0 4%;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-start {
+  @apply flex items-start justify-start;
+}
+
+.flex-end {
+  @apply flex items-center justify-end;
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+#hamburger {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  background: var(--menu-btn-bg);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#hamburger.active {
+  background: var(--menu-btn-active-bg);
+}
+
+#hamburger span {
+  position: absolute;
+  display: inline-block;
+  width: 27px;
+  height: 2px;
+  background: var(--menu-line-bg);
+  transition: transform 0.25s;
+}
+
+#hamburger span:nth-child(1) {
+  top: 54%;
+}
+
+#hamburger span:nth-child(2) {
+  top: 40%;
+}
+
+#hamburger.active span {
+  top: unset;
+  background: var(--menu-line-active-bg);
+}
+
+#hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+#hamburger.active span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: -5px;
+  left: 0;
+  z-index: 0;
+}
+
+.overlay svg path {
+  fill: var(--menu-bg);
+}
+
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+}
+
+.menu .primary-menu a {
+  position: relative;
+  top: 120px;
+  text-decoration: none;
+  color: var(--menu-text);
+}
+
+.menu .primary-menu {
+  align-self: flex-end;
+  position: relative;
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu .primary-menu a {
+  text-transform: capitalize;
+  font-size: 138px;
+  font-weight: 600;
+  line-height: 101.47px;
+  right: 10%;
+  transition:
+    color 0.5s ease,
+    right 0.5s linear;
+}
+
+.menu .primary-menu a:hover {
+  color: var(--menu-text-hover);
+  right: 0;
+}
+
+.menu-item {
+  position: relative;
+  line-height: 0;
+}
+
+.menu-item:after {
+  content: '';
+  position: absolute;
+  top: 130px;
+  left: -100px;
+  width: 120%;
+  height: 200%;
+  background: var(--menu-bg);
+  margin: 0 auto;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.primary-menu .menu-container .wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.primary-menu .menu-container .wrapper img {
+  transform: translate(-30px, 15px);
+  opacity: 0;
+  transition:
+    transform 0.5s linear,
+    opacity 0.5s linear;
+}
+
+.primary-menu .menu-container .wrapper .menu-item:has(a:hover) img {
+  transform: translate(0, 15px);
+  opacity: 1;
+}
+
+.menu .secondary-menu a,
+.menu .secondary-menu a ~ p {
+  position: relative;
+  top: 150px;
+  text-decoration: none;
+  color: var(--menu-text);
+}
+
+.secondary-menu .btn.menu-item:after {
+  top: 150px;
+}
+
+.secondary-menu .list .menu-item:after {
+  left: 0px;
+}
