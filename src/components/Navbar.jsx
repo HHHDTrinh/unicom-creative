@@ -14,6 +14,7 @@ const Navbar = () => {
   const pathRef = useRef();
   const menuRef = useRef();
   const btnRef = useRef();
+  const overlayRef = useRef();
   const queryEl = gsap.utils.selector(menuRef);
   const btnEl = gsap.utils.selector(btnRef);
   const [toggleMobile, setToggleMobile] = useState(false);
@@ -37,6 +38,9 @@ const Navbar = () => {
 
   const handleAnimateOpenMenu = () => {
     timeline
+      .to(overlayRef.current, 0.5, {
+        display: 'block',
+      })
       .to(
         pathRef.current,
         1,
@@ -156,6 +160,14 @@ const Navbar = () => {
         },
         '-=0.5'
       )
+      .to(
+        overlayRef.current,
+        0.5,
+        {
+          display: 'none',
+        },
+        '>'
+      )
       .reverse();
   };
 
@@ -202,7 +214,7 @@ const Navbar = () => {
           </div>
         </button>
       </div>
-      <div className='overlay'>
+      <div className='overlay' ref={overlayRef}>
         <svg viewBox='0 0 1000 1000'>
           <path ref={pathRef} d='M0 2S175 1 500 1s500 1 500 1V0H0Z'></path>
         </svg>
