@@ -5,12 +5,15 @@ import { CSSRulePlugin } from 'gsap/all';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import HoverButton from './HoverButton';
 
 gsap.registerPlugin(CSSRulePlugin);
 
 const Navbar = () => {
+  const router = useRouter();
+
   const pathRef = useRef();
   const menuRef = useRef();
   const btnRef = useRef();
@@ -171,6 +174,22 @@ const Navbar = () => {
       .reverse();
   };
 
+  //Normal function
+  const handleNavigate = (e, path) => {
+    e.preventDefault();
+    if (path !== '/') {
+      handleCloseMenu();
+      router.push(path);
+    } else {
+      if (toggleMobile) {
+        handleCloseMenu();
+        router.push(path);
+      } else {
+        router.push(path);
+      }
+    }
+  };
+
   useLayoutEffect(() => {
     if (toggleMobile) {
       document.body.style.overflowY = 'hidden';
@@ -182,8 +201,8 @@ const Navbar = () => {
   return (
     <nav className='absolute left-0 right-0 top-[3.2%] z-[1]'>
       <div className='max_container relative z-[2]'>
-        <Link
-          href='/'
+        <a
+          onClick={(e) => handleNavigate(e, '/')}
           style={{ width: '210.22px', height: '62.5px', position: 'relative' }}
         >
           <Image
@@ -196,7 +215,7 @@ const Navbar = () => {
             className='object-contain'
             layout='fill'
           />
-        </Link>
+        </a>
         <button
           className='flex-center gap-2'
           onClick={toggleMobile ? handleCloseMenu : handleOpenMenu}
@@ -230,7 +249,7 @@ const Navbar = () => {
                   width={77}
                   height={77}
                 />
-                <Link href='/about'>About</Link>
+                <a onClick={(e) => handleNavigate(e, '/about')}>About</a>
                 <div className='menu-item-revealer'></div>
               </div>
               <div className='menu-item flex gap-4'>
@@ -240,7 +259,9 @@ const Navbar = () => {
                   width={77}
                   height={77}
                 />
-                <Link href='/funding-options'>Funding Options</Link>
+                <a onClick={(e) => handleNavigate(e, '/funding-options')}>
+                  Funding Options
+                </a>
                 <div className='menu-item-revealer'></div>
               </div>
               <div className='menu-item flex gap-4'>
@@ -250,7 +271,9 @@ const Navbar = () => {
                   width={77}
                   height={77}
                 />
-                <Link href='/referral-engine'>Refferal Engine</Link>
+                <a onClick={(e) => handleNavigate(e, '/referral-engine')}>
+                  Refferal Engine
+                </a>
                 <div className='menu-item-revealer'></div>
               </div>
               <div className='menu-item flex gap-4'>
@@ -260,7 +283,7 @@ const Navbar = () => {
                   width={77}
                   height={77}
                 />
-                <Link href='/contact'>Contact</Link>
+                <a onClick={(e) => handleNavigate(e, '/contact')}>Contact</a>
                 <div className='menu-item-revealer'></div>
               </div>
             </div>

@@ -144,6 +144,7 @@ body {
   top: 120px;
   text-decoration: none;
   color: var(--menu-text);
+  cursor: pointer;
 }
 
 .menu .primary-menu {
@@ -210,7 +211,7 @@ body {
     opacity 0.5s linear;
 }
 
-.primary-menu .menu-container .wrapper .menu-item:has(a:hover) img {
+.primary-menu .menu-container .wrapper .menu-item:has(a:not(:focus):hover) img {
   transform: translate(0, 15px);
   opacity: 1;
 }
