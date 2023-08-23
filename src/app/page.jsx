@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/all';
 
 import HoverButton from '@components/HoverButton';
 import SectionCards from '@components/SectionCards';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,15 +100,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div
-          className='h-[1441.18px] w-screen'
-          style={{
-            backgroundImage: 'url("/assets/images/home-man.png")',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'contain',
-            backgroundSize: '100%',
-          }}
-        ></div>
+        <div className='5lx:h-[1441.18px] relative h-screen w-screen'>
+          <Image src='/assets/images/home-man.png' alt='man' fill />
+        </div>
         <div className='pined-cards' ref={cardsRef}>
           {cards.map((card, idx) => (
             <SectionCards
@@ -119,15 +114,16 @@ const Home = () => {
             />
           ))}
         </div>
-        <div
-          className='h-[1796.54px] w-screen'
-          style={{
-            backgroundImage: 'url("/assets/images/circur-carousel-bg.png")',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'contain',
-            backgroundSize: '100%',
-          }}
-        ></div>
+        <div className='relative h-screen w-screen 5xl:h-[1796.54px]'>
+          <Image
+            src='/assets/images/circur-carousel-bg.png'
+            alt='circular'
+            fill
+          />
+          <div className='relative'>
+            <h1>Hello</h1>
+          </div>
+        </div>
       </section>
     </>
   );

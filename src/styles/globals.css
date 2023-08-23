@@ -169,8 +169,8 @@ body {
 
 .menu .primary-menu a:hover {
   /* .menu .primary-menu a.active-link { */
-  color: var(--menu-text-hover);
-  right: 0;
+  color: var(--menu-text-hover) !important;
+  right: 0 !important;
 }
 
 .menu-item {
@@ -205,22 +205,18 @@ body {
 }
 
 .primary-menu .menu-container .wrapper img {
-  transform: translate(-30px, 15px);
+  transform: translate(0, 15px);
   opacity: 0;
-  transition:
-    transform 0.5s linear,
-    opacity 0.5s linear;
+  transition: opacity 0.5s linear;
 }
 
-.primary-menu .menu-container .wrapper .menu-item:has(a:not(:focus):hover) img {
-  transform: translate(0, 15px);
-  opacity: 1;
+.primary-menu
+  .menu-container
+  .wrapper
+  .menu-item:has(a:not(:focus, :active):hover)
+  img {
+  opacity: 1 !important;
 }
-
-/* .primary-menu .menu-container .wrapper .menu-item:has(a.active-link) img {
-  transform: translate(0, 15px);
-  opacity: 1;
-} */
 
 .menu .secondary-menu a,
 .menu .secondary-menu a ~ p {

@@ -87,6 +87,25 @@ const Navbar = () => {
         '-=1'
       )
       .to(
+        queryEl('.menu .primary-menu div.active-link img'),
+        0.5,
+        {
+          opacity: 1,
+          ease: 'power3.out',
+        },
+        '-=0.5'
+      )
+      .to(
+        queryEl('.menu .primary-menu a.active-link'),
+        0.5,
+        {
+          right: 0,
+          color: '#edf82d',
+          ease: 'power3.out',
+        },
+        '-=1'
+      )
+      .to(
         btnEl('div >  *'),
         0.6,
         {
@@ -103,13 +122,27 @@ const Navbar = () => {
 
   const handleAnimateCloseMenu = () => {
     timeline
-      .to(queryEl('.menu-item > a'), 0.6, {
-        top: 120,
+      .to(queryEl('.menu .primary-menu div.active-link img'), 0.4, {
+        opacity: 0,
         ease: 'power3.out',
-        stagger: {
-          amount: 0.5,
-        },
       })
+      .to(queryEl('.menu .primary-menu a.active-link'), 0.8, {
+        right: '10%',
+        color: '#fff',
+        ease: 'power3.out',
+      })
+      .to(
+        queryEl('.menu-item > a'),
+        0.6,
+        {
+          top: 120,
+          ease: 'power3.out',
+          stagger: {
+            amount: 0.5,
+          },
+        },
+        '>+0.5'
+      )
       .to(
         btnEl('div >  *'),
         0.6,
@@ -247,7 +280,11 @@ const Navbar = () => {
         <div className='primary-menu'>
           <div className='menu-container'>
             <div className='wrapper'>
-              <div className='menu-item relative flex gap-4'>
+              <div
+                className={`${
+                  pathname == '/about' ? 'active-link' : ''
+                } menu-item relative flex gap-4`}
+              >
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
@@ -263,7 +300,11 @@ const Navbar = () => {
                 </a>
                 <div className='menu-item-revealer'></div>
               </div>
-              <div className='menu-item relative flex gap-4'>
+              <div
+                className={`${
+                  pathname == '/funding-options' ? 'active-link' : ''
+                } menu-item relative flex gap-4`}
+              >
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
@@ -281,7 +322,11 @@ const Navbar = () => {
                 </a>
                 <div className='menu-item-revealer'></div>
               </div>
-              <div className='menu-item relative flex gap-4'>
+              <div
+                className={`${
+                  pathname == '/referral-engine' ? 'active-link' : ''
+                } menu-item relative flex gap-4`}
+              >
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
@@ -299,7 +344,11 @@ const Navbar = () => {
                 </a>
                 <div className='menu-item-revealer'></div>
               </div>
-              <div className='menu-item relative flex gap-4'>
+              <div
+                className={`${
+                  pathname == '/contact' ? 'active-link' : ''
+                } menu-item relative flex gap-4`}
+              >
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
