@@ -168,6 +168,7 @@ body {
 }
 
 .menu .primary-menu a:hover {
+  /* .menu .primary-menu a.active-link { */
   color: var(--menu-text-hover);
   right: 0;
 }
@@ -215,6 +216,11 @@ body {
   transform: translate(0, 15px);
   opacity: 1;
 }
+
+/* .primary-menu .menu-container .wrapper .menu-item:has(a.active-link) img {
+  transform: translate(0, 15px);
+  opacity: 1;
+} */
 
 .menu .secondary-menu a,
 .menu .secondary-menu a ~ p {

@@ -1,6 +1,59 @@
+'use client';
+
+import { useRef, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+
 import HoverButton from '@components/HoverButton';
+import SectionCards from '@components/SectionCards';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const cards = [
+  {
+    title: 'Fill out the Survey',
+    desc: 'Easy Process',
+    paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,...',
+  },
+  {
+    title: 'Get Connected',
+    desc: 'Easy Process',
+    paragraph:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+  },
+  {
+    title: 'Get Funded',
+    desc: 'Easy Process',
+    paragraph:
+      'You can fill out the survey by filling out the survey to get the survey yes thats right.',
+  },
+];
 
 const Home = () => {
+  const cardsRef = useRef();
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      let cardss = gsap.utils.toArray('.card-item');
+      const spacer = 300;
+
+      cardss.forEach((card, index) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: `top-=${index * spacer} top+=0px`,
+          endTrigger: cardsRef.current,
+          end: `bottom top+=${250 + cards.length * spacer}`,
+          pin: true,
+          pinSpacing: false,
+          // markers: true,
+          id: 'card-pin',
+          invalidateOnRefresh: true,
+        });
+      });
+    }, cardsRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
       <section>
@@ -50,6 +103,26 @@ const Home = () => {
           className='h-[1441.18px] w-screen'
           style={{
             backgroundImage: 'url("/assets/images/home-man.png")',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+            backgroundSize: '100%',
+          }}
+        ></div>
+        <div className='pined-cards' ref={cardsRef}>
+          {cards.map((card, idx) => (
+            <SectionCards
+              title={card.title}
+              desc={card.desc}
+              paragraph={card.paragraph}
+              index={idx + 1}
+              key={idx}
+            />
+          ))}
+        </div>
+        <div
+          className='h-[1796.54px] w-screen'
+          style={{
+            backgroundImage: 'url("/assets/images/circur-carousel-bg.png")',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundSize: '100%',

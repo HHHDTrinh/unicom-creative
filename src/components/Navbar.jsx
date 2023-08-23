@@ -4,8 +4,7 @@ import { gsap } from 'gsap';
 import { CSSRulePlugin } from 'gsap/all';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 import HoverButton from './HoverButton';
 
@@ -13,6 +12,7 @@ gsap.registerPlugin(CSSRulePlugin);
 
 const Navbar = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const pathRef = useRef();
   const menuRef = useRef();
@@ -203,7 +203,12 @@ const Navbar = () => {
       <div className='max_container relative z-[2]'>
         <a
           onClick={(e) => handleNavigate(e, '/')}
-          style={{ width: '210.22px', height: '62.5px', position: 'relative' }}
+          style={{
+            width: '210.22px',
+            height: '62.5px',
+            position: 'relative',
+            cursor: 'pointer',
+          }}
         >
           <Image
             src={`${
@@ -242,48 +247,72 @@ const Navbar = () => {
         <div className='primary-menu'>
           <div className='menu-container'>
             <div className='wrapper'>
-              <div className='menu-item flex gap-4'>
+              <div className='menu-item relative flex gap-4'>
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
                   width={77}
                   height={77}
+                  style={{ width: 77, height: 77 }}
                 />
-                <a onClick={(e) => handleNavigate(e, '/about')}>About</a>
+                <a
+                  className={pathname == '/about' ? 'active-link' : ''}
+                  onClick={(e) => handleNavigate(e, '/about')}
+                >
+                  About
+                </a>
                 <div className='menu-item-revealer'></div>
               </div>
-              <div className='menu-item flex gap-4'>
+              <div className='menu-item relative flex gap-4'>
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
                   width={77}
                   height={77}
+                  style={{ width: 77, height: 77 }}
                 />
-                <a onClick={(e) => handleNavigate(e, '/funding-options')}>
+                <a
+                  className={
+                    pathname == '/funding-options' ? 'active-link' : ''
+                  }
+                  onClick={(e) => handleNavigate(e, '/funding-options')}
+                >
                   Funding Options
                 </a>
                 <div className='menu-item-revealer'></div>
               </div>
-              <div className='menu-item flex gap-4'>
+              <div className='menu-item relative flex gap-4'>
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
                   width={77}
                   height={77}
+                  style={{ width: 77, height: 77 }}
                 />
-                <a onClick={(e) => handleNavigate(e, '/referral-engine')}>
+                <a
+                  className={
+                    pathname == '/referral-engine' ? 'active-link' : ''
+                  }
+                  onClick={(e) => handleNavigate(e, '/referral-engine')}
+                >
                   Refferal Engine
                 </a>
                 <div className='menu-item-revealer'></div>
               </div>
-              <div className='menu-item flex gap-4'>
+              <div className='menu-item relative flex gap-4'>
                 <Image
                   src='/assets/icons/arrow-right.svg'
                   alt='menu-arrow'
                   width={77}
                   height={77}
+                  style={{ width: 77, height: 77 }}
                 />
-                <a onClick={(e) => handleNavigate(e, '/contact')}>Contact</a>
+                <a
+                  className={pathname == '/contact' ? 'active-link' : ''}
+                  onClick={(e) => handleNavigate(e, '/contact')}
+                >
+                  Contact
+                </a>
                 <div className='menu-item-revealer'></div>
               </div>
             </div>
