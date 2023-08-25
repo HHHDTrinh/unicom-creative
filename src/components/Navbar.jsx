@@ -1,26 +1,35 @@
 'use client';
 import { useState, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { CSSRulePlugin } from 'gsap/all';
+import { CSSRulePlugin, ScrollToPlugin } from 'gsap/all';
 
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 
 import HoverButton from './HoverButton';
 
-gsap.registerPlugin(CSSRulePlugin);
+gsap.registerPlugin(CSSRulePlugin, ScrollToPlugin);
 
 const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const haveWrapper =
+    pathname === '/' ||
+    pathname === '/about' ||
+    pathname === '/funding-options' ||
+    pathname === '/referral-engine' ||
+    pathname === '/contact';
+
   const pathRef = useRef();
   const menuRef = useRef();
   const btnRef = useRef();
+  const scrollRef = useRef();
   const overlayRef = useRef();
   const queryEl = gsap.utils.selector(menuRef);
   const btnEl = gsap.utils.selector(btnRef);
-  const [toggleMobile, setToggleMobile] = useState(false);
+  const scrollEl = gsap.utils.selector(scrollRef);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   //GSAP Variables
   const timeline = gsap.timeline({ paused: true });
@@ -28,13 +37,13 @@ const Navbar = () => {
   const end = 'M0,1005S175,995,500,995s500,5,500,5V0H0Z';
 
   const handleOpenMenu = () => {
-    setToggleMobile((prev) => !prev);
+    setToggleMenu((prev) => !prev);
     handleAnimateOpenMenu();
     timeline.reversed(!timeline.reversed());
   };
 
   const handleCloseMenu = () => {
-    setToggleMobile((prev) => !prev);
+    setToggleMenu((prev) => !prev);
     handleAnimateCloseMenu();
     timeline.reversed(!timeline.reversed());
   };
@@ -54,6 +63,13 @@ const Navbar = () => {
           ease: 'power2.easeIn',
         },
         '<'
+      )
+      .to(
+        '.hide-on-menu',
+        {
+          opacity: 0,
+        },
+        '<-=0.5'
       )
       .to(
         pathRef.current,
@@ -121,16 +137,25 @@ const Navbar = () => {
   };
 
   const handleAnimateCloseMenu = () => {
+    const element = document.querySelector('.active-link');
+    if (element) {
+      timeline
+        .to(queryEl('.menu .primary-menu div.active-link img'), 0.4, {
+          opacity: 0,
+          ease: 'power3.out',
+        })
+        .to(
+          queryEl('.menu .primary-menu a.active-link'),
+          0.8,
+          {
+            right: '10%',
+            color: '#fff',
+            ease: 'power3.out',
+          },
+          '<'
+        );
+    }
     timeline
-      .to(queryEl('.menu .primary-menu div.active-link img'), 0.4, {
-        opacity: 0,
-        ease: 'power3.out',
-      })
-      .to(queryEl('.menu .primary-menu a.active-link'), 0.8, {
-        right: '10%',
-        color: '#fff',
-        ease: 'power3.out',
-      })
       .to(
         queryEl('.menu-item > a'),
         0.6,
@@ -141,7 +166,7 @@ const Navbar = () => {
             amount: 0.5,
           },
         },
-        '>+0.5'
+        element ? '>+=0.5' : '+=0.6'
       )
       .to(
         btnEl('div >  *'),
@@ -197,6 +222,13 @@ const Navbar = () => {
         '-=0.5'
       )
       .to(
+        '.hide-on-menu',
+        {
+          opacity: 1,
+        },
+        '>-=0.25'
+      )
+      .to(
         overlayRef.current,
         0.5,
         {
@@ -204,7 +236,16 @@ const Navbar = () => {
         },
         '>'
       )
+      .play()
       .reverse();
+  };
+
+  const handleScrollToGrants = () => {
+    const sectionGrants = document.querySelector('#section-grants');
+    gsap.to(window, {
+      duration: 2,
+      scrollTo: sectionGrants,
+    });
   };
 
   //Normal function
@@ -214,7 +255,7 @@ const Navbar = () => {
       handleCloseMenu();
       router.push(path);
     } else {
-      if (toggleMobile) {
+      if (toggleMenu) {
         handleCloseMenu();
         router.push(path);
       } else {
@@ -224,14 +265,33 @@ const Navbar = () => {
   };
 
   useLayoutEffect(() => {
-    if (toggleMobile) {
+    if (toggleMenu) {
       document.body.style.overflowY = 'hidden';
     } else {
       document.body.style.overflowY = 'auto';
     }
-  }, [toggleMobile]);
+  }, [toggleMenu]);
 
-  return (
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap
+        .timeline({ repeat: -1 })
+        .to(scrollEl('svg'), {
+          marginBottom: 10,
+          ease: 'power2.easeIn',
+          duration: 0.6,
+        })
+        .to(scrollEl('svg'), {
+          marginBottom: 0,
+          ease: 'power2.easeOut',
+          duration: 0.6,
+        });
+    }, scrollRef);
+
+    return () => ctx.revert();
+  });
+
+  return haveWrapper ? (
     <nav className='absolute left-0 right-0 top-[3.2%] z-[1]'>
       <div className='max_container relative z-[2]'>
         <a
@@ -245,7 +305,7 @@ const Navbar = () => {
         >
           <Image
             src={`${
-              toggleMobile
+              toggleMenu
                 ? '/assets/icons/logo-active.svg'
                 : '/assets/icons/logo.svg'
             }`}
@@ -254,22 +314,51 @@ const Navbar = () => {
             fill
           />
         </a>
-        <button
-          className='flex-center gap-2'
-          onClick={toggleMobile ? handleCloseMenu : handleOpenMenu}
-        >
-          <p
-            className={`font-darker text-[32px] font-semibold leading-[43.39px] ${
-              toggleMobile ? 'text-white' : 'text-[#282866]'
-            }`}
+        <div className='flex items-center gap-[44px]'>
+          {pathname === '/funding-options' && (
+            <div className='hide-on-menu z-0 flex translate-y-[-5px] gap-[14px] font-darker text-[34.093px] font-semibold leading-normal'>
+              <p className='text-primary'>Choose Grants</p>
+              <span
+                onClick={handleScrollToGrants}
+                className='cursor-pointer text-light-blue'
+                ref={scrollRef}
+              >
+                Click to select
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='17'
+                  height='16.7'
+                  viewBox='0 0 79 80'
+                  fill='none'
+                  className='ml-[4px] inline-block rotate-90'
+                >
+                  <path
+                    fillRule='evenodd'
+                    clipRule='evenodd'
+                    d='M64.6629 43.4332L0 43.4332L0 36.4332L64.6803 36.4332L33.5102 5.26284L38.46 0.31311L75.5962 37.4496L78.0711 39.9245L75.5962 42.3994L38.46 79.5356L33.5102 74.5859L64.6629 43.4332Z'
+                    fill='#4E4EFF'
+                  />
+                </svg>
+              </span>
+            </div>
+          )}
+          <button
+            className='flex-center gap-2'
+            onClick={toggleMenu ? handleCloseMenu : handleOpenMenu}
           >
-            {toggleMobile ? 'Close' : 'Menu'}
-          </p>
-          <div id='hamburger' className={toggleMobile ? 'active' : ''}>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
+            <p
+              className={`translate-y-[-5px] font-darker text-[32px] font-semibold leading-[43.39px] ${
+                toggleMenu ? 'text-white' : 'text-primary'
+              }`}
+            >
+              {toggleMenu ? 'Close' : 'Menu'}
+            </p>
+            <div id='hamburger' className={toggleMenu ? 'active' : ''}>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+        </div>
       </div>
       <div className='overlay' ref={overlayRef}>
         <svg viewBox='0 0 1000 1000'>
@@ -405,6 +494,8 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+  ) : (
+    <></>
   );
 };
 

@@ -39,6 +39,7 @@ body {
 
 .wrap_content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -116,13 +117,13 @@ body {
 }
 
 .overlay {
-  position: fixed;
-  width: 100vw;
   height: 100vh;
   top: -5px;
   left: 0;
   z-index: 0;
   display: none;
+  position: fixed;
+  width: 100vw;
 }
 
 .overlay svg path {
@@ -360,3 +361,22 @@ body {
 .c-button:hover .c-button_label img {
   fill: var(--button-hover-color-text);
 }
+
+/* Circular Carousel */
+.circular-carousel > svg {
+  /* visibility: hidden; */
+  position: absolute;
+  fill: transparent;
+}
+
+/* .circular-carousel .circular-wrapper.active-card {
+  background: var(--menu-bg);
+}
+
+.circular-carousel .circular-wrapper.active-card p {
+  color: var(--menu-btn-active-bg);
+}
+
+.circular-carousel .circular-wrapper.active-card .circular-arrow {
+  fill: #edf82d;
+} */

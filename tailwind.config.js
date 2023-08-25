@@ -22,6 +22,12 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        primary: '#282866',
+        secondary: '#74FFFE',
+        'light-yellow': '#EDF82D',
+        'light-blue': '#4E4EFF',
+      },
       fontFamily: {
         darker: ['Darker Grotesque', 'sans-serif'],
         dmsans: ['DM Sans', 'sans-serif'],

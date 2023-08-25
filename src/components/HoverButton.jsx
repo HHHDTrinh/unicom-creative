@@ -31,7 +31,7 @@ const HoverButton = ({ isDefault, textBlue, text, link }) => {
           </Link>
           <p
             className={`w-[314.89px] font-dmsans text-[32px] font-normal leading-[39.61px] ${
-              textBlue ? 'text-[#282866]' : 'text-white'
+              textBlue ? 'text-primary' : 'text-white'
             }`}
           >
             Find grants, rebates and VC funding. Success fee only*
