@@ -15,7 +15,9 @@ const Footer = () => {
 
   return haveWrapper ? (
     <footer
-      className='relative mt-[175px] h-[1440px] w-screen'
+      className={`${
+        pathname === '/referral-engine' ? 'mt-0' : 'mt-[175px]'
+      } relative h-[1440px] w-screen`}
       style={{
         backgroundImage: 'url("/assets/images/footer.svg")',
         backgroundRepeat: 'no-repeat',

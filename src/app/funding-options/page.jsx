@@ -1,8 +1,15 @@
+'use client';
+import { useState } from 'react';
+
+import AccordItem from '@components/AccordItem';
 import HoverButton from '@components/HoverButton';
+import { accordionFundings } from '@configs/datas';
 
 const FundingOptions = () => {
+  const [expanded, setExpanded] = useState(0);
+
   return (
-    <div className='mt-[calc(100vh/4.5)] w-screen bg-white 5xl:mt-[362px]'>
+    <div className='mt-[calc(100vh/4.5)] w-screen overflow-hidden bg-white 5xl:mt-[362px]'>
       <section className='max_container relative h-fit items-start'>
         <article className='flex h-full w-full items-start justify-between'>
           <p className='translate-y-[-15px] font-darker text-[138px] font-semibold capitalize leading-[77.03%] text-primary'>
@@ -32,8 +39,19 @@ const FundingOptions = () => {
       </section>
       <section
         id='section-grants'
-        className='h-[200vh] w-screen bg-black'
-      ></section>
+        className='max_container mb-[44px] mt-[198.18px] flex-col'
+      >
+        {accordionFundings.map((accor, i) => (
+          <AccordItem
+            key={'accordion-funding-' + i}
+            idx={i}
+            text={accor.title}
+            data={accor.data}
+            expanded={expanded}
+            setExpanded={setExpanded}
+          />
+        ))}
+      </section>
     </div>
   );
 };

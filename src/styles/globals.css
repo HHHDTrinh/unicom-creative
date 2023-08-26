@@ -69,6 +69,16 @@ body {
 }
 
 /* Menu Reveal */
+nav.have-shadow {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  height: 137px;
+  top: 0;
+  box-shadow: 0px 4px 19px 0px rgba(0, 0, 0, 0.05);
+}
 
 #hamburger {
   position: relative;
@@ -249,7 +259,9 @@ body {
 }
 
 .c-button:hover,
-.c-button:focus-visible {
+.c-button:focus-visible,
+.c-button:hover .c-button_inner:has(.not-default) .c-button_label,
+.c-button:focus-visible .c-button_inner:has(.not-default) .c-button_label {
   color: var(--button-hover-color-text, currentColor) !important;
 }
 
@@ -362,6 +374,33 @@ body {
   fill: var(--button-hover-color-text);
 }
 
+.c-button_inner:has(.not-default) {
+  height: 80px;
+  padding: 0;
+  width: 254px;
+}
+
+.c-button_inner:has(.not-default) .c-button_label {
+  color: var(--menu-btn-bg);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'DM Sans';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  letter-spacing: 0;
+}
+
+.c-button_label.not-default svg {
+  display: inline-block;
+}
+
 /* Circular Carousel */
 .circular-carousel > svg {
   /* visibility: hidden; */
@@ -380,3 +419,72 @@ body {
 .circular-carousel .circular-wrapper.active-card .circular-arrow {
   fill: #edf82d;
 } */
+
+.referral-secondary-section {
+  padding: 0 6% 0 8.5%;
+}
+
+.referral-secondary-section > p {
+  color: #282866;
+  font-family: 'Darker Grotesque';
+  font-size: 138.859px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 89.03%;
+}
+
+.referral-secondary-section > p > span {
+  color: #8282ff;
+}
+
+.referral-secondary-section > figure p {
+  color: #282866;
+  font-family: DM Sans;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125.03%;
+}
+
+.form-subcribe > div {
+  position: relative;
+}
+
+.form-subcribe label {
+  position: absolute;
+  left: 37.8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #282866;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'Darker Grotesque';
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 98.6%;
+}
+
+.form-subcribe input {
+  background: var(--bg);
+  border-radius: 32px;
+  width: 761px;
+  height: 96px;
+  padding-left: 153.57px;
+  color: #8282ff;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'Darker Grotesque';
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 98.6%;
+}
+
+.form-subcribe div:has(input[type='text']) {
+  margin-bottom: 16px;
+}
+
+.form-subcribe input::placeholder {
+  color: #cacaca;
+}

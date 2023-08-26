@@ -70,4 +70,154 @@ const abouts = [
   },
 ];
 
-export { cards, carousels, accordionHome, circulars, abouts };
+const accordionFundings = [
+  {
+    title: 'Government\n Grants',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+  {
+    title: 'The Research and\n Development Grant',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+  {
+    title: 'The Export Marketing\n Development Grant',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+  {
+    title: 'Other Grants and\n Reimbursements',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+  {
+    title: 'Other Grants and\n Reimbursements',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+  {
+    title: 'Renewable Energy\n Rebates',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+  {
+    title: 'Venture Capital\n Funding',
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+  <p>
+    Up to 90% of businesses don’t know what grants are available to
+    them. They leave funding on the table—sometimes for years! 
+  </p>
+  <p>
+    We make sure you are aware of the right grants and you can access
+    them pain free. Our grant partner has helped over 700+ companies
+    access grants and does not charge you until they win the grant. 
+  </p>
+  <p>Some of the options that are available</p>
+  <ul class='list-inside list-disc pl-[1rem]'>
+    <li>The Research and Development Grant </li>
+    <li>The Export Marketing Development Grant</li>
+    <li>Other Grants and Reimbursements</li>
+  </ul>
+</div>`,
+  },
+];
+
+export {
+  cards,
+  carousels,
+  accordionHome,
+  circulars,
+  abouts,
+  accordionFundings,
+};

@@ -55,7 +55,7 @@ const Home = () => {
   const circularRef = useRef();
   const circularEl = gsap.utils.selector(circularRef);
 
-  const [expanded, setExpanded] = useState(0);
+  const [expanded, setExpanded] = useState(2);
 
   let animation, proxy;
   const numBoxes = circulars.length;
@@ -339,7 +339,7 @@ const Home = () => {
 
   return (
     <>
-      <section>
+      <section className='overflow-hidden'>
         <div
           className='relative h-[2094.73px] w-screen'
           style={{

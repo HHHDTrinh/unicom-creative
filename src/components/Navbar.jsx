@@ -1,5 +1,5 @@
 'use client';
-import { useState, useLayoutEffect, useRef } from 'react';
+import { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { CSSRulePlugin, ScrollToPlugin } from 'gsap/all';
 
@@ -24,11 +24,11 @@ const Navbar = () => {
   const pathRef = useRef();
   const menuRef = useRef();
   const btnRef = useRef();
-  const scrollRef = useRef();
+  const navRef = useRef();
   const overlayRef = useRef();
   const queryEl = gsap.utils.selector(menuRef);
   const btnEl = gsap.utils.selector(btnRef);
-  const scrollEl = gsap.utils.selector(scrollRef);
+  const navEl = gsap.utils.selector(navRef);
   const [toggleMenu, setToggleMenu] = useState(false);
 
   //GSAP Variables
@@ -53,6 +53,15 @@ const Navbar = () => {
       .to(overlayRef.current, 0.5, {
         display: 'block',
       })
+      .set(
+        '.hide-on-menu > *',
+        {
+          opacity: 0,
+          cursor: 'default',
+          ease: 'power3.easeOut',
+        },
+        '<'
+      )
       .to(
         pathRef.current,
         1,
@@ -63,13 +72,6 @@ const Navbar = () => {
           ease: 'power2.easeIn',
         },
         '<'
-      )
-      .to(
-        '.hide-on-menu',
-        {
-          opacity: 0,
-        },
-        '<-=0.5'
       )
       .to(
         pathRef.current,
@@ -222,19 +224,29 @@ const Navbar = () => {
         '-=0.5'
       )
       .to(
-        '.hide-on-menu',
-        {
-          opacity: 1,
-        },
-        '>-=0.25'
-      )
-      .to(
         overlayRef.current,
         0.5,
         {
           display: 'none',
         },
         '>'
+      )
+      .set(
+        '.hide-on-menu > *',
+        {
+          opacity: 1,
+          cursor: 'auto',
+          ease: 'power3.easeOut',
+        },
+        '<-0.2'
+      )
+      .set(
+        '.hide-on-menu > span',
+        {
+          cursor: 'pointer',
+          ease: 'power3.easeOut',
+        },
+        '<'
       )
       .play()
       .reverse();
@@ -276,23 +288,45 @@ const Navbar = () => {
     let ctx = gsap.context(() => {
       gsap
         .timeline({ repeat: -1 })
-        .to(scrollEl('svg'), {
+        .to(navEl('svg.arrow-jump'), {
           marginBottom: 10,
           ease: 'power2.easeIn',
           duration: 0.6,
         })
-        .to(scrollEl('svg'), {
+        .to(navEl('svg.arrow-jump'), {
           marginBottom: 0,
           ease: 'power2.easeOut',
           duration: 0.6,
         });
-    }, scrollRef);
+    }, navRef);
+
+    return () => ctx.revert();
+  });
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.timeline().to(
+        '.hide-on-menu',
+        {
+          display: 'flex',
+          ease: 'power2.easeIn',
+        },
+        '2.5'
+      );
+    }, navRef);
 
     return () => ctx.revert();
   });
 
   return haveWrapper ? (
-    <nav className='absolute left-0 right-0 top-[3.2%] z-[1]'>
+    <nav
+      className={`${
+        pathname === '/contact' || pathname === '/referral-engine'
+          ? 'have-shadow'
+          : ''
+      } absolute left-0 right-0 top-[3.2%] z-[1]`}
+      ref={navRef}
+    >
       <div className='max_container relative z-[2]'>
         <a
           onClick={(e) => handleNavigate(e, '/')}
@@ -314,14 +348,13 @@ const Navbar = () => {
             fill
           />
         </a>
-        <div className='flex items-center gap-[44px]'>
+        <div className='relative flex items-center'>
           {pathname === '/funding-options' && (
-            <div className='hide-on-menu z-0 flex translate-y-[-5px] gap-[14px] font-darker text-[34.093px] font-semibold leading-normal'>
+            <div className='hide-on-menu absolute right-[calc(100%+44px)] z-[-1] hidden w-[409px] translate-y-[-5px] gap-[14px] font-darker text-[34.093px] font-semibold leading-normal'>
               <p className='text-primary'>Choose Grants</p>
               <span
                 onClick={handleScrollToGrants}
                 className='cursor-pointer text-light-blue'
-                ref={scrollRef}
               >
                 Click to select
                 <svg
@@ -330,7 +363,7 @@ const Navbar = () => {
                   height='16.7'
                   viewBox='0 0 79 80'
                   fill='none'
-                  className='ml-[4px] inline-block rotate-90'
+                  className='arrow-jump ml-[4px] inline-block rotate-90'
                 >
                   <path
                     fillRule='evenodd'

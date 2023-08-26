@@ -2,7 +2,7 @@ import { abouts } from '@configs/datas';
 
 const About = () => {
   return (
-    <div className='mt-[calc(100vh/4.5)] w-screen bg-white 5xl:mt-[362px]'>
+    <div className='mt-[calc(100vh/4.5)] w-screen overflow-hidden bg-white 5xl:mt-[362px]'>
       <section className='max_container relative h-[1064px] items-start'>
         <div className='absolute z-0 translate-y-[-4rem]'>
           <h5 className='text-justify font-dmsans text-[240.963px] font-medium uppercase leading-[87.03%] tracking-[12px] text-[#e6e6ff]'>
