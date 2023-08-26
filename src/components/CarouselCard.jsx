@@ -14,7 +14,7 @@ const CarouselCard = ({ title, extra, text, avatar, name, job }) => {
         </h5>
       </div>
       <article className='flex basis-1/2 flex-col gap-[32px]'>
-        <p className='w-[84%] font-dmsans text-[56px] font-normal leading-[136%] text-[#141041]'>
+        <p className='w-[84%] font-dmsans text-[32px] font-normal leading-[136%] text-[#141041] 5xl:text-[56px]'>
           {text}
         </p>
         <figure className='flex gap-[37px]'>

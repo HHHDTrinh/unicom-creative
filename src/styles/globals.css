@@ -612,3 +612,26 @@ nav.have-shadow {
 /* Mobile */
 @media screen and (max-width: 46.1875em) {
 }
+
+/* Testing */
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.picker {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.circular-wrapper {
+  top: 5%;
+}
