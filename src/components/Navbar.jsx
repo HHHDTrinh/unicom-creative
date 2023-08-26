@@ -528,7 +528,59 @@ const Navbar = () => {
       </div>
     </nav>
   ) : (
-    <></>
+    <nav
+      className={`${
+        pathname === '/contact' || pathname === '/referral-engine'
+          ? 'have-shadow'
+          : ''
+      } absolute left-0 right-0 top-[3.2%] z-[1]`}
+      ref={navRef}
+    >
+      <div className='max_container relative z-[2]'>
+        <a
+          onClick={(e) => handleNavigate(e, '/')}
+          style={{
+            width: '210.22px',
+            height: '62.5px',
+            position: 'relative',
+            cursor: 'pointer',
+          }}
+        >
+          <Image
+            src='/assets/icons/logo.svg'
+            alt='logo'
+            className='object-contain'
+            fill
+          />
+        </a>
+        <button
+          className='flex-center gap-2'
+          onClick={(e) => handleNavigate(e, '/')}
+        >
+          <p className='translate-y-[-5px] font-darker text-[32px] font-semibold leading-[43.39px] text-primary'>
+            Close
+          </p>
+          <div
+            id='hamburger'
+            className='active'
+            style={{
+              background: '#282866 !important',
+            }}
+          >
+            <span
+              style={{
+                background: '#74FFFE !important',
+              }}
+            ></span>
+            <span
+              style={{
+                background: '#74FFFE !important',
+              }}
+            ></span>
+          </div>
+        </button>
+      </div>
+    </nav>
   );
 };
 

@@ -87,7 +87,7 @@ const ReferralEngine = () => {
             </h5>
             <div>
               <label htmlFor='name'>Name</label>
-              <input type='text' id='name' value='McFunny Face' />
+              <input type='text' id='name' defaultValue='McFunny Face' />
             </div>
             <div className='mb-[32px]'>
               <label htmlFor='email'>Email</label>

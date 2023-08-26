@@ -213,6 +213,27 @@ const accordionFundings = [
   },
 ];
 
+const grantQuestions = [
+  'Have you accessed any government\n grants in the past year?',
+  'Are you working on a research\n and development project?',
+  'Do you do any international business?',
+  'Are you a charity, NDIS provideror\n healthcare provider?',
+];
+
+const energyQuestions = [
+  'Have you accessed any energy\n rebates in the past year?',
+  'Do you want to save on your lighting bill?',
+  'Do you have an electric to\n electric hot water system?',
+  'Is the hot water system over 10 years old?',
+  'Do you have a commercial building\n that could use solar power?',
+];
+
+const ventureQuestions = [
+  'Does your company make over\n 1 million in revenue per year?',
+  'Have you ever raised venture\n capital in your business?',
+  'Do you want us to put your company website\n information forward for investors (if eligible)',
+];
+
 export {
   cards,
   carousels,
@@ -220,4 +241,7 @@ export {
   circulars,
   abouts,
   accordionFundings,
+  ventureQuestions,
+  energyQuestions,
+  grantQuestions,
 };

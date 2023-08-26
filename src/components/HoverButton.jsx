@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
-const HoverButton = ({ isDefault, textBlue, text, link }) => {
+const HoverButton = ({ isDefault, textBlue, text, link, changeWidth }) => {
   return (
     <>
       {isDefault ? (
@@ -30,7 +29,7 @@ const HoverButton = ({ isDefault, textBlue, text, link }) => {
             </div>
           </Link>
           <p
-            className={`w-[314.89px] font-dmsans text-[32px] font-normal leading-[39.61px] ${
+            className={`w-[314.89px] font-dmsans font-normal xl:text-[26px] xl:leading-none 5xl:text-[32px] 5xl:leading-[39.61px] ${
               textBlue ? 'text-primary' : 'text-white'
             }`}
           >
@@ -39,8 +38,18 @@ const HoverButton = ({ isDefault, textBlue, text, link }) => {
         </div>
       ) : (
         <>
-          <Link href={link} className='c-button -primary'>
-            <div className='c-button_inner'>
+          <Link
+            href={link}
+            className={`c-button -primary ${
+              link === '/basic-details' ? 'entry-btn' : ''
+            }`}
+          >
+            <div
+              className='c-button_inner'
+              style={{
+                width: changeWidth ? changeWidth : '254px',
+              }}
+            >
               <span className='c-button_label not-default'>
                 {text}
                 <svg

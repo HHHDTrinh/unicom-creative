@@ -63,7 +63,7 @@ const CircularCard = ({ isActive, text }) => {
       <p
         className={`${
           isActive ? 'active-card' : ''
-        } text-light-blue mt-[0.6em] basis-2/4 font-darker text-[100px] font-semibold leading-[78.53%]`}
+        } mt-[0.6em] basis-2/4 font-darker text-[100px] font-semibold leading-[78.53%] text-light-blue`}
         dangerouslySetInnerHTML={{
           __html: replaceWithBr(text),
         }}

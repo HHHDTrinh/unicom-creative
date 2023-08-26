@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useLayoutEffect, useState } from 'react';
+import { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger, Draggable, MotionPathPlugin } from 'gsap/all';
 import Slider from 'react-slick';
@@ -51,13 +51,47 @@ function PrevArrow(props) {
 }
 
 const Home = () => {
+  const [spacing, setSpacing] = useState(100);
+  useLayoutEffect(() => {
+    const value = document.body.offsetWidth;
+    function handleCalculateSpacing() {
+      switch (true) {
+        case value >= 2560:
+          setSpacing(300);
+          break;
+        case value >= 1920:
+          setSpacing(200);
+          break;
+        case value >= 1536:
+          setSpacing(150);
+          break;
+        case value >= 1281:
+          setSpacing(100);
+          break;
+        default:
+          break;
+      }
+    }
+    handleCalculateSpacing();
+
+    window.addEventListener('resize', handleCalculateSpacing);
+
+    return () => {
+      window.removeEventListener('resize', handleCalculateSpacing);
+    };
+  }, []);
+
   const cardsRef = useRef();
   const circularRef = useRef();
   const circularEl = gsap.utils.selector(circularRef);
 
   const [expanded, setExpanded] = useState(2);
 
-  let animation, proxy;
+  let animation = gsap.timeline({
+      paused: true,
+      defaults: { duration: 1, ease: 'none' },
+    }),
+    proxy;
   const numBoxes = circulars.length;
   const boxStep = 1 / (numBoxes + 1);
   const numPositions = numBoxes * 2;
@@ -93,17 +127,16 @@ const Home = () => {
     });
   }
 
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      let cardss = gsap.utils.toArray('.card-item');
-      const spacer = 300;
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cardss = gsap.utils.toArray('.card-item');
 
       cardss.forEach((card, index) => {
         ScrollTrigger.create({
           trigger: card,
-          start: `top-=${index * spacer} top+=0px`,
+          start: `top-=${index * spacing} top+=0px`,
           endTrigger: cardsRef.current,
-          end: `bottom top+=${250 + cards.length * spacer}`,
+          end: `bottom top+=${250 + cards.length * spacing}`,
           pin: true,
           pinSpacing: false,
           // markers: true,
@@ -113,9 +146,9 @@ const Home = () => {
       });
     }, cardsRef);
     return () => ctx.revert();
-  }, []);
+  }, [spacing]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
       //GSAP variables
       proxy = document.createElement('div');
@@ -128,7 +161,7 @@ const Home = () => {
         xPercent: -50,
         yPercent: 10,
         transformOrigin: 'center center',
-        x: wrapper.offsetWidth / 2,
+        x: wrapper.offsetWidth / 2.5,
         y: 0,
       });
 
@@ -141,11 +174,6 @@ const Home = () => {
 
       // Create animation.
       function createAnimation() {
-        animation = gsap.timeline({
-          paused: true,
-          defaults: { duration: 1, ease: 'none' },
-        });
-
         const minEnd = 0.5 + positionStep;
         animation.to(
           boxes,
@@ -162,7 +190,7 @@ const Home = () => {
         );
 
         // TODO: Calculate initial position based on window width.
-        let initialProgress = normalizeProgress(positionStep * 3);
+        let initialProgress = normalizeProgress(positionStep * 4);
         if (numBoxes < 5) initialProgress = normalizeProgress(0.5);
 
         animation.progress(1).progress(initialProgress);
@@ -179,7 +207,7 @@ const Home = () => {
           allowContextMenu: true,
           bounds: {
             minX: positionStep * c,
-            maxX: (1 - positionStep) * c,
+            maxX: (10 - positionStep) * c,
           },
           edgeResistance: 0.85,
           trigger: wrapper,
@@ -341,7 +369,7 @@ const Home = () => {
     <>
       <section className='overflow-hidden'>
         <div
-          className='relative h-[2094.73px] w-screen'
+          className='relative w-screen xl:h-[150vh] 5xl:h-[2094.73px]'
           style={{
             backgroundImage: 'url("/assets/images/home-bg.svg")',
             backgroundRepeat: 'no-repeat',
@@ -349,35 +377,35 @@ const Home = () => {
           }}
         >
           <div className='max_container absolute bottom-[10%]'>
-            <div className='flex basis-5/6 flex-col text-primary'>
-              <h1 className='font-darker text-[190px] font-semibold leading-[73.53%]'>
+            <div className='flex flex-col text-primary 5xl:basis-5/6'>
+              <h1 className='font-darker font-semibold leading-[73.53%] xl:text-[calc(100vw/20)] 5xl:text-[190px]'>
                 Find funding you
                 <br className='hidden xl:block' />
                 didn’t know existed.
               </h1>
-              <div className='mt-[111.82px] flex items-end justify-between'>
-                <p className='font-dmsans text-[40px] font-bold leading-[98.53%]'>
+              <div className='mt-[111.82px] flex justify-between xl:w-[90vw] xl:flex-col xl:items-start xl:gap-[20px] 5xl:w-auto 5xl:flex-row 5xl:items-end 5xl:gap-0'>
+                <p className='font-dmsans font-bold leading-[98.53%] xl:text-[38px] 5xl:text-[40px]'>
                   How it works?
                 </p>
-                <div className='flex flex-col gap-8 font-dmsans text-[56px] font-normal leading-[125.03%]'>
+                <div className='flex flex-col font-dmsans font-normal leading-[125.03%] xl:gap-4 xl:text-[40px] 5xl:gap-8 5xl:text-[56px]'>
                   <p>
                     Cash flow is a major issue for companies.
-                    <br className='hidden xl:block' />
-                    However 90%* of businesses are unaware
-                    <br className='hidden xl:block' />
-                    of the funding or grant options available to them.
+                    <br className='xl:hidden 5xl:block' />
+                    However 90%* of businesses are unaware of
+                    <br className='xl:hidden 5xl:block' /> the funding or grant
+                    options available to them.
                   </p>
                   <p>
                     We have found three major groups of funding
-                    <br className='hidden xl:block' />
+                    <br className='xl:hidden 5xl:block' />
                     and the right specialists to help you apply so
-                    <br className='hidden xl:block' />
+                    <br className='xl:hidden 5xl:block' />
                     you don’t miss out on opportunities.
                   </p>
                 </div>
               </div>
             </div>
-            <div className='mt-[7%] self-start'>
+            <div className='self-start xl:translate-x-[-30vw] 5xl:mt-[7%] 5xl:translate-x-0'>
               <HoverButton isDefault textBlue />
             </div>
           </div>
@@ -389,7 +417,7 @@ const Home = () => {
             speed={1000}
             infinite={true}
             adaptiveHeight
-            autoplay={true}
+            // autoplay={true}
             className='5lx:h-[1440px] h-auto w-screen'
           >
             <div className='relative h-full w-full'>
@@ -401,7 +429,7 @@ const Home = () => {
               <img
                 src='/assets/images/image-home-wrapper.svg'
                 alt='wrapper'
-                className='absolute left-0 top-0 opacity-75'
+                className='absolute left-0 top-0 opacity-75 xl:w-[calc(100vw/2.1)] 5xl:h-auto 5xl:w-auto'
               />
             </div>
             <div className='relative h-full w-full'>
@@ -413,7 +441,7 @@ const Home = () => {
               <img
                 src='/assets/images/image-home-wrapper.svg'
                 alt='wrapper'
-                className='absolute left-0 top-0 opacity-75'
+                className='absolute left-0 top-0 opacity-75 xl:w-[calc(100vw/2.1)] 5xl:h-auto 5xl:w-auto'
               />
             </div>
             <div className='relative h-full w-full'>
@@ -425,7 +453,7 @@ const Home = () => {
               <img
                 src='/assets/images/image-home-wrapper.svg'
                 alt='wrapper'
-                className='absolute left-0 top-0 opacity-75'
+                className='absolute left-0 top-0 opacity-75 xl:w-[calc(100vw/2.1)] 5xl:h-auto 5xl:w-auto'
               />
             </div>
           </Slider>
