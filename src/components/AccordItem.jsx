@@ -28,16 +28,16 @@ const AccordItem = ({ isDefault, text, idx, expanded, setExpanded, data }) => {
       ref={ref}
     >
       <div
-        className='max_container'
-        style={{ padding: 0 }}
+        className='max_container xl:gap-[40px] 5xl:gap-0'
+        style={{ padding: '0  !important' }}
         onClick={() => setExpanded(idx === expanded ? -1 : idx)}
       >
         {isDefault ? (
           <>
-            <p className='my-[71px] font-darker text-[81px] font-semibold leading-[105.63%] text-primary'>
+            <p className='font-darker font-semibold leading-[105.63%] text-primary xl:my-[calc(100vh/15)] xl:text-[calc(100vw/40)] 5xl:my-[71px] 5xl:text-[81px]'>
               {text}
             </p>
-            <span className='cursor-pointer font-darker text-[139px] font-normal leading-[77.03%] text-primary'>
+            <span className='cursor-pointer font-darker font-normal leading-[77.03%] text-primary xl:text-[calc(100vw/20)] 5xl:text-[139px]'>
               {idx === expanded ? '-' : '+'}
             </span>
           </>
@@ -46,14 +46,14 @@ const AccordItem = ({ isDefault, text, idx, expanded, setExpanded, data }) => {
             <p
               className={`${
                 idx === expanded ? 'text-[#8282FF]' : 'text-primary'
-              } my-[74px] font-darker text-[81px] font-semibold leading-[105.63%]`}
+              } font-darker font-semibold leading-[105.63%] xl:my-[2rem] xl:text-[calc(100vh/15)] 5xl:my-[74px] 5xl:text-[81px]`}
             >
               0{idx + 1}
             </p>
             <p
               className={`${
                 idx === expanded ? 'text-[#8282FF]' : 'text-primary'
-              } my-[74px] w-[1110px] translate-x-[-3rem] font-darker text-[81px] font-semibold leading-[105.63%]`}
+              }  display-br w-[1110px] font-darker font-semibold leading-[105.63%] xl:my-[2rem] xl:text-[calc(100vh/15)] 5xl:my-[74px] 5xl:translate-x-[-3rem] 5xl:text-[81px]`}
               dangerouslySetInnerHTML={{ __html: replaceWithBr(text) }}
             />
             <Image
@@ -64,19 +64,19 @@ const AccordItem = ({ isDefault, text, idx, expanded, setExpanded, data }) => {
               }
               width={115}
               height={115}
-              style={{
-                width: 115,
-                height: 115,
-              }}
+              // style={{
+              //   width: 115,
+              //   height: 115,
+              // }}
               alt='accordion-arrow'
-              className='cursor-pointer'
+              className='cursor-pointer xl:h-[70px] xl:w-[70px] 5xl:h-[115px] 5xl:w-[115px]'
             />
           </>
         )}
       </div>
       {isDefault ? (
-        <div className='accordion_details h-0 w-full overflow-hidden'>
-          <p className='font-dmsans text-[40px] font-normal leading-[136%] text-[#141041]'>
+        <div className='accordion_details h-0 w-full overflow-hidden xl:pl-[2%] 5xl:pl-0'>
+          <p className='font-dmsans font-normal leading-[136%] text-[#141041] xl:text-[calc(100vw/60)] 5xl:text-[40px]'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

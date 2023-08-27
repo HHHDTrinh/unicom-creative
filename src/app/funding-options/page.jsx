@@ -12,12 +12,12 @@ const FundingOptions = () => {
     <div className='mt-[calc(100vh/4.5)] w-screen overflow-hidden bg-white 5xl:mt-[362px]'>
       <section className='max_container relative h-fit items-start'>
         <article className='flex h-full w-full items-start justify-between'>
-          <p className='translate-y-[-15px] font-darker text-[138px] font-semibold capitalize leading-[77.03%] text-primary'>
+          <p className='translate-y-[-15px] font-darker font-semibold capitalize leading-[77.03%] text-primary xl:text-[calc(100vh/10)] 5xl:text-[138px]'>
             Funding
             <br />
             <span className='text-[#8282ff]'>Options</span>
           </p>
-          <div className='item-start flex h-full w-[1019px] flex-col gap-[40px] font-dmsans text-[56px] font-normal text-primary'>
+          <div className='item-start flex h-full flex-col gap-[40px] font-dmsans font-normal text-primary xl:w-[50vw] xl:text-[calc(100vh/20)] 5xl:w-[1019px] 5xl:text-[56px]'>
             <p className='leading-[125.03%]'>
               You know there is funding out there, but you don’t know who to
               talk to or where to find it
@@ -33,7 +33,7 @@ const FundingOptions = () => {
             </p>
           </div>
         </article>
-        <span className='absolute bottom-0 left-[4%]'>
+        <span className='absolute bottom-0 xl:left-0 5xl:left-[4%]'>
           <HoverButton isDefault textBlue />
         </span>
       </section>

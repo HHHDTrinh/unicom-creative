@@ -16,8 +16,8 @@ const Footer = () => {
   return haveWrapper ? (
     <footer
       className={`${
-        pathname === '/referral-engine' ? 'mt-0' : 'mt-[175px]'
-      } relative h-[1440px] w-screen`}
+        pathname === '/referral-engine' ? 'mt-0' : 'xl:mt-[80px] 5xl:mt-[175px]'
+      } relative w-screen xl:h-screen 5xl:h-[1440px]`}
       style={{
         backgroundImage: 'url("/assets/images/footer.svg")',
         backgroundRepeat: 'no-repeat',
@@ -28,14 +28,14 @@ const Footer = () => {
         <p className='font-dmsans text-[40px] font-medium leading-[93.53%] text-primary'>
           We are here to help.
         </p>
-        <h5 className='mb-[97px] mt-[24px] max-w-[1590px] text-center font-darker text-[138px] font-semibold leading-[85.5%] text-primary'>
+        <h5 className='mt-[24px] max-w-[1590px] text-center font-darker font-semibold leading-[85.5%] text-primary xl:mb-[calc(100vh/20)] xl:text-[calc(100vh/10)] 5xl:mb-[97px] 5xl:text-[138px]'>
           {pathname === '/'
             ? 'Keep your business stable during uncertain times.'
             : 'If you are struggling with the stress of cash flow and don’t know where to turn'}
         </h5>
         <HoverButton isDefault textBlue />
       </div>
-      <article className='max_container item-center absolute bottom-[5em] flex justify-between'>
+      <article className='max_container item-center absolute flex justify-between xl:bottom-[2rem] 5xl:bottom-[5em]'>
         <div className='flex items-center gap-[29px]'>
           <a
             href='#'

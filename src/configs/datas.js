@@ -73,7 +73,7 @@ const abouts = [
 const accordionFundings = [
   {
     title: 'Government\n Grants',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 
@@ -93,7 +93,7 @@ const accordionFundings = [
   },
   {
     title: 'The Research and\n Development Grant',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 
@@ -113,7 +113,7 @@ const accordionFundings = [
   },
   {
     title: 'The Export Marketing\n Development Grant',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 
@@ -133,7 +133,7 @@ const accordionFundings = [
   },
   {
     title: 'Other Grants and\n Reimbursements',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 
@@ -153,7 +153,7 @@ const accordionFundings = [
   },
   {
     title: 'Other Grants and\n Reimbursements',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 
@@ -173,7 +173,7 @@ const accordionFundings = [
   },
   {
     title: 'Renewable Energy\n Rebates',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 
@@ -193,7 +193,7 @@ const accordionFundings = [
   },
   {
     title: 'Venture Capital\n Funding',
-    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans text-[40px] font-normal leading-[136%] text-primary'>
+    data: `<div class='flex w-[1249px] flex-col items-start justify-center gap-[30px] font-dmsans xl:text-[calc(100vh/30)] 5xl:text-[40px] font-normal leading-[136%] text-primary'>
   <p>
     Up to 90% of businesses don’t know what grants are available to
     them. They leave funding on the table—sometimes for years! 

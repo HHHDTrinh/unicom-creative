@@ -5,12 +5,12 @@ const Contact = () => {
     <div className='h-screen w-screen overflow-hidden bg-white pt-[calc(100vh/4.5)] 5xl:pt-[362px]'>
       <section className='max_container'>
         <article className='flex h-full w-full items-start justify-between'>
-          <p className='translate-y-[-15px] font-darker text-[138px] font-semibold capitalize leading-[77.03%] text-primary'>
+          <p className='translate-y-[-15px] font-darker  font-semibold capitalize leading-[77.03%] text-primary xl:text-[calc(100vh/10)] 5xl:text-[138px]'>
             Get in
             <br />
             <span className='text-[#8282ff]'>Touch</span>
           </p>
-          <div className='item-start flex h-full w-[937px] flex-col gap-[80px] font-dmsans text-[56px] font-normal text-primary'>
+          <div className='item-start flex h-full flex-col font-dmsans font-normal text-primary xl:w-[50vw] xl:gap-[calc(100vh/20)] xl:text-[calc(100vh/20)] 5xl:w-[937px] 5xl:gap-[80px] 5xl:text-[56px]'>
             <div className='flex flex-col gap-[10px]'>
               <a
                 href='mailto:mia@unicom.au'

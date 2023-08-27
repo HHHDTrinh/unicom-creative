@@ -22,14 +22,14 @@ function NextArrow(props) {
   return (
     <button
       onClick={onClick}
-      className='absolute bottom-[2em] left-[16em] z-[1]'
+      className='absolute bottom-[2em] z-[1] xl:left-[7em] 5xl:left-[16em]'
     >
       <Image
         src='/assets/icons/circular-btn.svg'
         width={118}
         height={118}
         alt='circular-next'
-        className='rotate-[180deg]'
+        className='rotate-[180deg] xl:h-[80px] xl:w-[80px] 5xl:h-[118px] 5xl:w-[118px]'
       />
     </button>
   );
@@ -40,35 +40,38 @@ function PrevArrow(props) {
   return (
     <button
       onClick={onClick}
-      className='absolute bottom-[2em] left-[7em] z-[1]'
+      className='absolute bottom-[2em] z-[1] xl:left-[1.5em] 5xl:left-[7em]'
     >
       <Image
         src='/assets/icons/circular-btn.svg'
         alt='circular-prev'
         width={118}
         height={118}
+        className='xl:h-[80px] xl:w-[80px] 5xl:h-[118px] 5xl:w-[118px]'
       />
     </button>
   );
 }
 
 const Home = () => {
-  const [spacing, setSpacing] = useState(100);
+  const [spacing, setSpacing] = useState(0);
+  console.log(spacing);
+
   useLayoutEffect(() => {
-    const value = document.body.offsetWidth;
+    const value = window.screen.width;
     function handleCalculateSpacing() {
       switch (true) {
-        case value >= 2560:
-          setSpacing(300);
+        case value >= 1281 && value <= 1535:
+          setSpacing(100);
           break;
-        case value >= 1920:
+        case value >= 1536 && value <= 1919:
+          setSpacing(120);
+          break;
+        case value >= 1920 && value <= 2559:
           setSpacing(200);
           break;
-        case value >= 1536:
-          setSpacing(150);
-          break;
-        case value >= 1281:
-          setSpacing(100);
+        case value >= 2560:
+          setSpacing(300);
           break;
         default:
           break;
@@ -88,6 +91,27 @@ const Home = () => {
   const circularEl = gsap.utils.selector(circularRef);
 
   const [expanded, setExpanded] = useState(1);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cardss = gsap.utils.toArray('.card-item');
+
+      cardss.forEach((card, index) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: `top-=${index * spacing} top+=0px`,
+          endTrigger: cardsRef.current,
+          end: `bottom top+=${250 + cards.length * spacing}`,
+          pin: true,
+          pinSpacing: false,
+          // markers: true,
+          id: 'card-pin',
+          invalidateOnRefresh: true,
+        });
+      });
+    }, cardsRef);
+    return () => ctx.revert();
+  }, [spacing]);
 
   // let animation = gsap.timeline({
   //     paused: true,
@@ -128,27 +152,6 @@ const Home = () => {
   //     if (i !== except && !tween.reversed()) tween.reverse();
   //   });
   // }
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cardss = gsap.utils.toArray('.card-item');
-
-      cardss.forEach((card, index) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: `top-=${index * spacing} top+=0px`,
-          endTrigger: cardsRef.current,
-          end: `bottom top+=${250 + cards.length * spacing}`,
-          pin: true,
-          pinSpacing: false,
-          // markers: true,
-          id: 'card-pin',
-          invalidateOnRefresh: true,
-        });
-      });
-    }, cardsRef);
-    return () => ctx.revert();
-  }, [spacing]);
 
   // useEffect(() => {
   //   let ctx = gsap.context(() => {
@@ -440,7 +443,7 @@ const Home = () => {
 
         _slides.forEach((slide) => {
           if (slide.getBoundingClientRect().y === min) {
-            slide.style.top = '18%';
+            slide.style.top = '20%';
           }
         });
       },
@@ -503,7 +506,7 @@ const Home = () => {
           {
             repeat: 1,
             backgroundColor: '#4E4EFF',
-            top: '5%',
+            top: '4%',
             yoyo: true,
           },
           0.5 - cellStep
@@ -553,7 +556,7 @@ const Home = () => {
 
     _slides.forEach((slide) => {
       if (slide.getBoundingClientRect().y === min) {
-        slide.style.top = '18%';
+        slide.style.top = '22%';
       }
     });
   });
@@ -664,7 +667,7 @@ const Home = () => {
           ))}
         </div>
         {/* Circular Carousel */}
-        <div className='relative h-screen w-screen overflow-hidden 5xl:h-[1796.54px]'>
+        <div className='relative hidden h-screen w-screen overflow-hidden xl:block 5xl:h-[1796.54px]'>
           <Image
             src='/assets/images/circur-carousel-bg.png'
             alt='circular'
@@ -672,9 +675,12 @@ const Home = () => {
           />
           <div className='absolute bottom-[15%] left-[50%] z-[1] flex translate-x-[-50%] gap-6'>
             <button
+              className='cursor-not-allowed'
               id='prev'
               // onClick={() => {
-              //   moveToProgress(animation.progress() + boxStep);
+              //   moveToProgress(
+              //     animation.progress() + 1 / cellsRef.current.length
+              //   );
               // }}
             >
               <Image
@@ -685,9 +691,12 @@ const Home = () => {
               />
             </button>
             <button
+              className='cursor-not-allowed'
               id='next'
               // onClick={() => {
-              //   moveToProgress(animation.progress() - boxStep);
+              //   moveToProgress(
+              //     animation.progress() - 1 / cellsRef.current.length
+              //   );
               // }}
             >
               <Image
@@ -823,13 +832,13 @@ const Home = () => {
             ))}
           </Slider>
         </div>
-        <div className='mt-[170.96px] w-screen'>
+        <div className='w-screen xl:mt-[calc(100vh/10)] 5xl:mt-[170.96px]'>
           <div className='max_container flex-col'>
-            <article className='flex w-full items-center self-start border-t-[4.06px] border-solid border-primary 4xl:gap-[355.65px]'>
-              <h6 className='my-[71px] font-darker text-[138px] font-semibold leading-[77.03%] text-primary'>
+            <article className='flex w-full items-center self-start border-t-[4.06px] border-solid border-primary xl:gap-10 5xl:gap-[355.65px]'>
+              <h6 className='font-darker font-semibold leading-[77.03%] text-primary xl:my-[calc(100vh/15)] xl:text-[calc(100vh/20)] 5xl:my-[71px] 5xl:text-[138px]'>
                 Got a question?
               </h6>
-              <p className='w-[650px] font-dmsans text-[32px] font-normal leading-[106.5%] text-primary'>
+              <p className='w-[650px] font-dmsans font-normal leading-[106.5%] text-primary xl:text-[calc(100vh/30)] 5xl:text-[32px]'>
                 We are here to answer any burning questions and ensure you are
                 taken care of.
               </p>

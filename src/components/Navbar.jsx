@@ -324,7 +324,7 @@ const Navbar = () => {
         pathname === '/contact' || pathname === '/referral-engine'
           ? 'have-shadow'
           : ''
-      } absolute left-0 right-0 top-[3.2%] z-[1]`}
+      } absolute left-0 right-0 top-[3.2%] z-[1] xl:top-[2%]`}
       ref={navRef}
     >
       <div className='max_container relative z-[2]'>
@@ -336,6 +336,7 @@ const Navbar = () => {
             position: 'relative',
             cursor: 'pointer',
           }}
+          className='xl:h-[50px] xl:w-auto 5xl:h-[62.5px] 5xl:w-[210.22px]'
         >
           <Image
             src={`${
@@ -490,14 +491,14 @@ const Navbar = () => {
           </div>
         </div>
         <div className='secondary-menu relative bottom-[5%] z-[3] self-start 3xl:w-[56%] 5xl:w-[67%]'>
-          <div className='flex justify-between'>
+          <div className='flex justify-between xl:gap-[calc(100vw/2.5)] 5xl:gap-0'>
             <div className='btn menu-item font-dmsans' ref={btnRef}>
               <HoverButton isDefault />
             </div>
             <div className='list flex flex-col font-darker'>
               <div className='menu-item'>
                 <a
-                  className='text-[44.73px] font-semibold leading-[60.65px] text-white'
+                  className='font-semibold text-white xl:text-[24px] xl:leading-tight 5xl:text-[44.73px] 5xl:leading-[60.65px]'
                   href='#'
                 >
                   LinkedIn
@@ -506,7 +507,7 @@ const Navbar = () => {
               </div>
               <div className='menu-item'>
                 <a
-                  className='text-[44.73px] font-semibold leading-[60.65px] text-white'
+                  className='font-semibold text-white xl:text-[24px] xl:leading-tight 5xl:text-[44.73px] 5xl:leading-[60.65px]'
                   href='#'
                 >
                   Instagram
@@ -515,7 +516,7 @@ const Navbar = () => {
               </div>
               <div className='menu-item'>
                 <a
-                  className='text-[44.73px] font-semibold leading-[60.65px] text-white'
+                  className='font-semibold text-white xl:text-[24px] xl:leading-tight 5xl:text-[44.73px] 5xl:leading-[60.65px]'
                   href='#'
                 >
                   Twitter
@@ -533,7 +534,7 @@ const Navbar = () => {
         pathname === '/contact' || pathname === '/referral-engine'
           ? 'have-shadow'
           : ''
-      } absolute left-0 right-0 top-[3.2%] z-[1]`}
+      } absolute left-0 right-0 z-[1] xl:top-[2%] 5xl:top-[3.2%]`}
       ref={navRef}
     >
       <div className='max_container relative z-[2]'>
@@ -545,6 +546,7 @@ const Navbar = () => {
             position: 'relative',
             cursor: 'pointer',
           }}
+          className='xl:h-[50px] xl:w-auto 5xl:h-[62.5px] 5xl:w-[210.22px]'
         >
           <Image
             src='/assets/icons/logo.svg'

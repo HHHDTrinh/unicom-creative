@@ -7,12 +7,12 @@ const ReferralEngine = () => {
     <div className='mt-[calc(100vh/4.5)] w-screen overflow-hidden bg-white 5xl:mt-[362px]'>
       <section className='max_container relative h-fit items-start'>
         <article className='flex h-full w-full items-start justify-between'>
-          <p className='translate-y-[-15px] font-darker text-[138px] font-semibold capitalize leading-[77.03%] text-primary'>
+          <p className='translate-y-[-15px] font-darker font-semibold capitalize leading-[77.03%] text-primary xl:text-[calc(100vh/10)] 5xl:text-[138px]'>
             Refferal Engine
             <br />
             <span className='text-[#8282ff]'>Options</span>
           </p>
-          <div className='item-start flex h-full w-[937px] flex-col gap-[40px] font-dmsans text-[56px] font-normal text-primary'>
+          <div className='item-start flex h-full flex-col gap-[40px] font-dmsans font-normal text-primary xl:w-[50vw] xl:text-[calc(100vh/20)] 5xl:w-[937px] 5xl:text-[56px]'>
             <p className='leading-[125.03%]'>
               You know there is funding out there, but you don’t know who to
               talk to or where to find it
@@ -28,7 +28,7 @@ const ReferralEngine = () => {
             </p>
           </div>
         </article>
-        <span className='absolute bottom-0 left-[4%]'>
+        <span className='absolute bottom-0 xl:left-0 5xl:left-[4%]'>
           <HoverButton isDefault textBlue />
         </span>
       </section>
@@ -57,7 +57,7 @@ const ReferralEngine = () => {
         </figure>
       </section>
       <section
-        className='flex-center h-[750px] w-screen'
+        className='flex-center w-screen xl:h-[80vh] 5xl:h-[750px]'
         style={{
           background: 'url("/assets/images/reffer-bg.png")',
           backgroundRepeat: 'no-repeat',
@@ -65,23 +65,22 @@ const ReferralEngine = () => {
         }}
       >
         <div
-          className='max_container'
+          className='max_container 5xl:gap-[692px]'
           style={{
             justifyContent: 'unset',
-            gap: '692px',
           }}
         >
-          <article>
-            <h5 className='font-darker text-[138px] font-semibold leading-[81.1%] text-secondary'>
+          <article className='xl:basis-1/2 5xl:basis-auto'>
+            <h5 className='font-darker font-semibold leading-[81.1%] text-secondary xl:text-[calc(100vh/10)] 5xl:text-[138px]'>
               Keep
               <br /> Updated
             </h5>
-            <p className='mt-[58px] w-[481px] font-dmsans text-[32px] font-normal leading-[125.03%] text-white'>
+            <p className='mt-[58px] font-dmsans text-[32px] font-normal leading-[125.03%] text-white xl:w-auto 5xl:w-[481px]'>
               We send regular emails to share ideas on who you should know or be
               connected with.
             </p>
           </article>
-          <form className='form-subcribe'>
+          <form className='form-subcribe xl:basis-1/2 5xl:basis-auto'>
             <h5 className='mb-[36px] font-dmsans text-[40px] font-normal leading-[125.03%] text-white'>
               Subscribe to our publications
             </h5>

@@ -595,10 +595,53 @@ nav.have-shadow {
     height: calc(100vh / 15);
     padding-left: calc(50vw / 2.75);
   }
+
+  .menu .primary-menu a {
+    font-size: calc(100vh / 10);
+    line-height: 0.5rem;
+  }
+
+  .menu-item:after {
+    top: 5rem;
+  }
+
+  .primary-menu .menu-container .wrapper img {
+    width: 50px !important;
+    height: 50px !important;
+    transform: translate(0, -1em);
+  }
+
+  .display-br br {
+    display: none;
+  }
+
+  nav.have-shadow {
+    height: 100px;
+  }
+
+  .referral-secondary-section > p {
+    font-size: 80px;
+  }
+
+  .referral-secondary-section > figure p {
+    font-size: 38px;
+  }
+
+  .form-subcribe input {
+    width: 100%;
+    height: 80px;
+  }
+
+  .form-subcribe .c-button.-primary .c-button_inner {
+    width: 200px !important;
+  }
 }
 
 /* Large screen - Desktop */
 @media only screen and (min-width: 120.063em) {
+  .display-br br {
+    display: block;
+  }
 }
 
 /* Mobile, Tablet */
@@ -630,8 +673,4 @@ nav.have-shadow {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-}
-
-.circular-wrapper {
-  top: 5%;
 }
