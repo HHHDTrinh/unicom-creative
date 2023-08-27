@@ -3,12 +3,7 @@
 import Image from 'next/image';
 import { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
-import {
-  ScrollTrigger,
-  Draggable,
-  MotionPathPlugin,
-  InertiaPlugin,
-} from 'gsap/all';
+import { ScrollTrigger, Draggable, MotionPathPlugin } from 'gsap/all';
 import Slider from 'react-slick';
 
 import { replaceWithBr } from '@utils/function';
@@ -20,7 +15,7 @@ import SectionCards from '@components/SectionCards';
 import CarouselCard from '@components/CarouselCard';
 import AccordItem from '@components/AccordItem';
 
-gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin, InertiaPlugin);
+gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
 
 function NextArrow(props) {
   const { onClick } = props;
@@ -435,27 +430,19 @@ const Home = () => {
       onDragEnd() {
         const i = wrapIndex((-this.endX / wrapWidth) * cells.length - 5);
         console.log(i);
-        // const _slides = circularEl('.circular-wrapper');
-        // console.log(_slides);
-        // console.log(circularEl(_slides[Math.floor(i)]));
-        // _slides.forEach((element) => {
-        //   document.querySelector(element).classList.remove('is-f-left-slide');
-        //   document.querySelector(element).classList.remove('is-left-slide');
-        //   document.querySelector(element).classList.remove('is-f-right-slide');
-        //   document.querySelector(element).classList.remove('is-right-slide');
-        //   document.querySelector(element).classList.remove('is-current-slide');
-        // });
-        // document.querySelector(_slides[i - 3]).classList.add('is-f-left-slide');
-        // document.querySelector(_slides[i - 2]).classList.add('is-left-slide');
-        // document
-        //   .querySelector(circularEl(_slides[Math.floor(i)]))
-        //   .classList.add('is-right-slide');
-        // document
-        //   .querySelector(_slides[i + 1])
-        //   .classList.add('is-f-right-slide');
-        // document
-        //   .querySelector(_slides[i - 1])
-        //   .classList.add('is-current-slide');
+        const _slides = circularEl('.circular-wrapper');
+        let min = _slides[0].getBoundingClientRect().y;
+        for (let i = 1; i < _slides.length; ++i) {
+          if (_slides[i].getBoundingClientRect().y < min) {
+            min = _slides[i].getBoundingClientRect().y;
+          }
+        }
+
+        _slides.forEach((slide) => {
+          if (slide.getBoundingClientRect().y === min) {
+            slide.style.top = '18%';
+          }
+        });
       },
     });
 
@@ -554,6 +541,22 @@ const Home = () => {
       baseTl.add(tl, index * -cellStep);
     }
   }, []);
+
+  useLayoutEffect(() => {
+    const _slides = circularEl('.circular-wrapper');
+    let min = _slides[0].getBoundingClientRect().y;
+    for (let i = 1; i < _slides.length; ++i) {
+      if (_slides[i].getBoundingClientRect().y < min) {
+        min = _slides[i].getBoundingClientRect().y;
+      }
+    }
+
+    _slides.forEach((slide) => {
+      if (slide.getBoundingClientRect().y === min) {
+        slide.style.top = '18%';
+      }
+    });
+  });
 
   return (
     <>
@@ -794,7 +797,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className='w-screen xl:h-auto 5xl:h-[80vh]'>
+        <div className='w-screen xl:h-auto 5xl:h-[50vh]'>
           <Slider
             slidesToShow={1}
             slidesToScroll={1}
