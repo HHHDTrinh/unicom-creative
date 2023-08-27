@@ -22,7 +22,7 @@ function NextArrow(props) {
   return (
     <button
       onClick={onClick}
-      className='absolute bottom-[2em] z-[1] xl:left-[7em] 5xl:left-[16em]'
+      className='absolute z-[1] xl:bottom-0 xl:left-[7em] 5xl:bottom-[2em] 5xl:left-[16em]'
     >
       <Image
         src='/assets/icons/circular-btn.svg'
@@ -40,7 +40,7 @@ function PrevArrow(props) {
   return (
     <button
       onClick={onClick}
-      className='absolute bottom-[2em] z-[1] xl:left-[1.5em] 5xl:left-[7em]'
+      className='absolute z-[1] xl:bottom-0 xl:left-[1.5em] 5xl:bottom-[2em] 5xl:left-[7em]'
     >
       <Image
         src='/assets/icons/circular-btn.svg'
@@ -835,7 +835,7 @@ const Home = () => {
         <div className='w-screen xl:mt-[calc(100vh/10)] 5xl:mt-[170.96px]'>
           <div className='max_container flex-col'>
             <article className='flex w-full items-center self-start border-t-[4.06px] border-solid border-primary xl:gap-10 5xl:gap-[355.65px]'>
-              <h6 className='font-darker font-semibold leading-[77.03%] text-primary xl:my-[calc(100vh/15)] xl:text-[calc(100vh/20)] 5xl:my-[71px] 5xl:text-[138px]'>
+              <h6 className='font-darker font-semibold leading-[77.03%] text-primary xl:my-[calc(100vh/10)] xl:text-[calc(100vh/20)] 5xl:my-[71px] 5xl:text-[138px]'>
                 Got a question?
               </h6>
               <p className='w-[650px] font-dmsans font-normal leading-[106.5%] text-primary xl:text-[calc(100vh/30)] 5xl:text-[32px]'>

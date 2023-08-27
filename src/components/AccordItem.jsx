@@ -24,7 +24,7 @@ const AccordItem = ({ isDefault, text, idx, expanded, setExpanded, data }) => {
     <div
       className={`${isHome ? 'border-y-[0.5px]' : 'border-t-[0.5px]'} ${
         isFunding ? 'border-y-[0.5px]' : 'border-t-[0.5px]'
-      } flex w-full flex-col border-light-blue`}
+      } flex w-full cursor-pointer flex-col border-light-blue`}
       ref={ref}
     >
       <div
