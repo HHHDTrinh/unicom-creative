@@ -556,7 +556,7 @@ const Home = () => {
 
     _slides.forEach((slide) => {
       if (slide.getBoundingClientRect().y === min) {
-        slide.style.top = '22%';
+        slide.style.top = '20%%';
       }
     });
   });
