@@ -68,7 +68,7 @@ const Home = () => {
           setSpacing(120);
           break;
         case value >= 1920 && value <= 2559:
-          setSpacing(220);
+          setSpacing(180);
           break;
         case value >= 2560:
           setSpacing(300);
